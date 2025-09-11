@@ -1,20 +1,26 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f4f4f4 100%);
+    color: #22223b;
 }
 
 header {
-    background: #35424a;
-    color: #ffffff;
-    padding: 20px 0;
+    background: linear-gradient(90deg, #5f2eea 0%, #4a47a3 100%);
+    color: #fff;
+    padding: 32px 0 24px 0;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(90, 60, 200, 0.08);
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(90, 60, 200, 0.12);
 }
 
 nav {
@@ -22,13 +28,20 @@ nav {
 }
 
 nav a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
     margin: 0 15px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background: #fff;
+    color: #5f2eea;
+    box-shadow: 0 2px 8px rgba(90, 60, 200, 0.12);
+    text-decoration: none;
 }
 
 .container {
@@ -38,16 +51,26 @@ nav a:hover {
 }
 
 article {
-    background: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 24px;
+    margin: 24px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(90, 60, 200, 0.08);
+    transition: box-shadow 0.2s;
+}
+article:hover {
+    box-shadow: 0 8px 32px rgba(90, 60, 200, 0.16);
 }
 
 footer {
     text-align: center;
     padding: 20px 0;
+    background: #4a47a3;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 -2px 8px rgba(90, 60, 200, 0.08);
+}
     background: #35424a;
     color: #ffffff;
     position: relative;

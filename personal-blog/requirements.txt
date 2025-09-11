@@ -1,0 +1,9 @@
+# requirements.txt for Personal Blog
+# If you want to use Python for backend or deployment, add packages below.
+# For a static HTML/CSS/JS blog, this file can be empty or include tools for development/deployment.
+
+# Example (uncomment if needed):
+# flask
+# gunicorn
+# requests
+# beautifulsoup4
