@@ -98,9 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
 
-	// Click effect for articles
+	// Click + hover effect for articles & share button
 	const articles = document.querySelectorAll('article');
 	articles.forEach(article => {
+		// Hiệu ứng click
 		article.addEventListener('mousedown', () => {
 			article.style.transform = 'scale(0.98)';
 			article.style.boxShadow = '0 8px 32px rgba(90, 60, 200, 0.24)';
@@ -112,8 +113,66 @@ document.addEventListener('DOMContentLoaded', function () {
 		article.addEventListener('mouseleave', () => {
 			article.style.transform = 'scale(1)';
 			article.style.boxShadow = '0 4px 16px rgba(90, 60, 200, 0.16)';
+			article.style.border = '';
+			const shareBtn = article.querySelector('.share-btn');
+			if (shareBtn) shareBtn.style.opacity = '0';
 		});
+		// Hiệu ứng hover
+		article.addEventListener('mouseenter', () => {
+			article.style.border = '2px solid #5f2eea';
+			const shareBtn = article.querySelector('.share-btn');
+			if (shareBtn) shareBtn.style.opacity = '1';
+		});
+		// Tạo nút chia sẻ nếu chưa có
+		if (!article.querySelector('.share-btn')) {
+			const shareBtn = document.createElement('button');
+			shareBtn.innerText = 'Chia sẻ';
+			shareBtn.className = 'share-btn';
+			shareBtn.style.position = 'absolute';
+			shareBtn.style.top = '16px';
+			shareBtn.style.right = '16px';
+			shareBtn.style.padding = '6px 14px';
+			shareBtn.style.background = '#5f2eea';
+			shareBtn.style.color = '#fff';
+			shareBtn.style.border = 'none';
+			shareBtn.style.borderRadius = '20px';
+			shareBtn.style.cursor = 'pointer';
+			shareBtn.style.opacity = '0';
+			shareBtn.style.transition = 'opacity 0.3s';
+			shareBtn.style.zIndex = '10';
+			shareBtn.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const url = window.location.href;
+				navigator.clipboard.writeText(url).then(() => {
+					showToast('Đã copy link bài viết!');
+				});
+			});
+			article.style.position = 'relative';
+			article.appendChild(shareBtn);
+		}
 	});
+
+	// Toast thông báo khi copy link
+	function showToast(message) {
+		let toast = document.createElement('div');
+		toast.innerText = message;
+		toast.style.position = 'fixed';
+		toast.style.bottom = '80px';
+		toast.style.right = '40px';
+		toast.style.background = '#5f2eea';
+		toast.style.color = '#fff';
+		toast.style.padding = '10px 24px';
+		toast.style.borderRadius = '24px';
+		toast.style.boxShadow = '0 4px 16px rgba(90, 60, 200, 0.16)';
+		toast.style.fontSize = '1rem';
+		toast.style.zIndex = '2000';
+		toast.style.opacity = '0';
+		toast.style.transition = 'opacity 0.4s';
+		document.body.appendChild(toast);
+		setTimeout(() => { toast.style.opacity = '1'; }, 100);
+		setTimeout(() => { toast.style.opacity = '0'; }, 1800);
+		setTimeout(() => { toast.remove(); }, 2200);
+	}
 
 	// Footer color transition on hover
 	const footer = document.querySelector('footer');
