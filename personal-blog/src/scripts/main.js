@@ -1,3 +1,36 @@
+	// Navigation click animation
+	navLinks.forEach(link => {
+		link.addEventListener('click', (e) => {
+			link.style.transform = 'scale(0.95)';
+			link.style.background = 'linear-gradient(90deg, #5f2eea 0%, #4a47a3 100%)';
+			setTimeout(() => {
+				link.style.transform = 'scale(1)';
+				link.style.background = '';
+			}, 200);
+		});
+	});
+
+	// Title animation on load
+	const mainTitle = document.querySelector('header h1');
+	if (mainTitle) {
+		mainTitle.style.opacity = 0;
+		mainTitle.style.transform = 'scale(0.8)';
+		setTimeout(() => {
+			mainTitle.style.transition = 'opacity 0.8s, transform 0.8s';
+			mainTitle.style.opacity = 1;
+			mainTitle.style.transform = 'scale(1)';
+		}, 300);
+	}
+
+	// Animate scroll to top button
+	scrollBtn.animate([
+		{ transform: 'scale(0.8)', opacity: 0.5 },
+		{ transform: 'scale(1)', opacity: 1 }
+	], {
+		duration: 800,
+		iterations: Infinity,
+		direction: 'alternate'
+	});
 // Hiệu ứng động cho blog cá nhân
 // Fade-in effect for blog posts
 document.addEventListener('DOMContentLoaded', function () {
