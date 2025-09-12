@@ -1,5 +1,4 @@
 // Hiệu ứng động cho blog cá nhân
-
 // Fade-in effect for blog posts
 document.addEventListener('DOMContentLoaded', function () {
 	const posts = document.querySelectorAll('article, #blog-posts');
@@ -35,4 +34,62 @@ document.addEventListener('DOMContentLoaded', function () {
 			link.style.boxShadow = '';
 		});
 	});
+	// Scroll to top button
+	const scrollBtn = document.createElement('button');
+	scrollBtn.innerText = '↑';
+	scrollBtn.id = 'scrollToTopBtn';
+	scrollBtn.style.position = 'fixed';
+	scrollBtn.style.bottom = '32px';
+	scrollBtn.style.right = '32px';
+	scrollBtn.style.padding = '12px 18px';
+	scrollBtn.style.fontSize = '1.5rem';
+	scrollBtn.style.background = 'linear-gradient(90deg, #5f2eea 0%, #4a47a3 100%)';
+	scrollBtn.style.color = '#fff';
+	scrollBtn.style.border = 'none';
+	scrollBtn.style.borderRadius = '50%';
+	scrollBtn.style.boxShadow = '0 4px 16px rgba(90, 60, 200, 0.16)';
+	scrollBtn.style.cursor = 'pointer';
+	scrollBtn.style.opacity = '0';
+	scrollBtn.style.transition = 'opacity 0.4s';
+	scrollBtn.style.zIndex = '1000';
+	document.body.appendChild(scrollBtn);
+
+	window.addEventListener('scroll', function () {
+		if (window.scrollY > 200) {
+			scrollBtn.style.opacity = '1';
+		} else {
+			scrollBtn.style.opacity = '0';
+		}
+	});
+	scrollBtn.addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+
+	// Click effect for articles
+	const articles = document.querySelectorAll('article');
+	articles.forEach(article => {
+		article.addEventListener('mousedown', () => {
+			article.style.transform = 'scale(0.98)';
+			article.style.boxShadow = '0 8px 32px rgba(90, 60, 200, 0.24)';
+		});
+		article.addEventListener('mouseup', () => {
+			article.style.transform = 'scale(1)';
+			article.style.boxShadow = '0 4px 16px rgba(90, 60, 200, 0.16)';
+		});
+		article.addEventListener('mouseleave', () => {
+			article.style.transform = 'scale(1)';
+			article.style.boxShadow = '0 4px 16px rgba(90, 60, 200, 0.16)';
+		});
+	});
+
+	// Footer color transition on hover
+	const footer = document.querySelector('footer');
+	if (footer) {
+		footer.addEventListener('mouseenter', () => {
+			footer.style.background = 'linear-gradient(90deg, #5f2eea 0%, #4a47a3 100%)';
+		});
+		footer.addEventListener('mouseleave', () => {
+			footer.style.background = '#4a47a3';
+		});
+	}
 });
