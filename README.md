@@ -3,7 +3,7 @@
 This project is a personal blog built using HTML, CSS, and JavaScript. It serves as a platform to share thoughts, ideas, and experiences through blog posts.
 
 ## Project Structure
-
+hahaha
 ```
 personal-blog
 ├── src
